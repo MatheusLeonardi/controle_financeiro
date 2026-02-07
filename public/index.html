@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle Financeiro Mensal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="tag">Controle Financeiro</p>
+        <h1>Organize receitas e gastos por mês</h1>
+        <p>Registre entradas e saídas, acompanhe o saldo e mantenha histórico mensal.</p>
+      </div>
+      <div class="hero-card">
+        <label for="month">Mês de referência</label>
+        <input type="month" id="month" />
+        <button id="loadMonth">Carregar mês</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid">
+        <article class="card">
+          <h2>Novo lançamento</h2>
+          <form id="entryForm">
+            <label>
+              Tipo
+              <select name="type" required>
+                <option value="receita">Receita</option>
+                <option value="gasto">Gasto</option>
+              </select>
+            </label>
+            <label>
+              Descrição
+              <input type="text" name="description" placeholder="Ex.: Salário" required />
+            </label>
+            <label>
+              Valor
+              <input type="number" name="amount" step="0.01" min="0" required />
+            </label>
+            <button type="submit">Salvar lançamento</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Resumo do mês</h2>
+          <div class="summary">
+            <div>
+              <span>Receitas</span>
+              <strong id="summaryIncome">R$ 0,00</strong>
+            </div>
+            <div>
+              <span>Gastos</span>
+              <strong id="summaryExpense">R$ 0,00</strong>
+            </div>
+            <div class="balance">
+              <span>Saldo</span>
+              <strong id="summaryBalance">R$ 0,00</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Lançamentos do mês</h2>
+        <div id="entries" class="entries">
+          <p class="muted">Selecione um mês para começar.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Dados salvos localmente no banco SQLite.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
